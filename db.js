@@ -1,8 +1,5 @@
 const { DB, DB_HOST, DB_PASSWORD, DB_PORT, DB_USER } = require('./common/config');
 const Sequelize = require('sequelize');
-
-console.log(DB_USER);
-
                                 //database username   password
 const sequelize = new Sequelize(DB, DB_USER, DB_PASSWORD, {
     host: DB_HOST,
@@ -11,11 +8,10 @@ const sequelize = new Sequelize(DB, DB_USER, DB_PASSWORD, {
 })
 
 sequelize.authenticate().then(
-    function success() {
+    () => {
         console.log("Connected to DB");
     },
-
-    function fail(err) {
+    (err) => {
         console.log(`Error: ${err}`);
     }
 )
